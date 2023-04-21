@@ -1,0 +1,3293 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Bootcamp Management System APIs",
+    "version": "1.0",
+    "description": "Bootcamp Management System APIs",
+    "contact": {
+      "name": "VMware "
+    }
+  },
+  "servers": [
+    {
+      "url": "https://localhost:4000"
+    }
+  ],
+  "paths": {
+    "/api/users": {
+      "get": {
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to all users",
+                      "userList": [
+                        {
+                          "_id": "62dcf27e7effaeb3e69947df",
+                          "email": "rohitvishwav@vmware.com",
+                          "name": "Rohit Vishwakarma",
+                          "BU": "CIBG",
+                          "role": "admin",
+                          "qualification": "b.tech",
+                          "team_id": null,
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "userList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "email": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "BU": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "qualification": {
+                            "type": "string"
+                          },
+                          "team_id": {
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Get request to all users",
+                      "userList": [
+                        {
+                          "_id": "62dcf27e7effaeb3e69947df",
+                          "email": "rohitvishwav@vmware.com",
+                          "name": "Rohit Vishwakarma",
+                          "BU": "CIBG",
+                          "role": "admin",
+                          "qualification": "b.tech",
+                          "team_id": null
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-all-users",
+        "description": "Get all users ",
+        "tags": [
+          "UserAPIs"
+        ]
+      }
+    },
+    "/api/users/{id}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "id",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get user by Id",
+        "tags": [
+          "UserAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "userObject": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "BU": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "qualification": {
+                          "type": "string"
+                        },
+                        "team_id": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "user",
+                      "userObject": {
+                        "email": "test2@vmware.com",
+                        "name": "TestUser2",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "user",
+                      "userObject": {
+                        "email": "test2@vmware.com",
+                        "name": "TestUser2",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "No user"
+          }
+        },
+        "operationId": "get-user-by-id",
+        "description": "Get user by id"
+      },
+      "delete": {
+        "summary": "Delete user by id",
+        "operationId": "delete-user-by-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "deletedUserObject": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "BU": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "qualification": {
+                          "type": "string"
+                        },
+                        "team_id": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "deleted",
+                      "deletedUserObject": {
+                        "email": "test2@vmware.com",
+                        "name": "TestUser2",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "deleted",
+                      "deletedUserObject": {
+                        "email": "test2@vmware.com",
+                        "name": "TestUser2",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "NoUser"
+                    }
+                  }
+                },
+                "examples": {
+                  "No user example": {
+                    "value": {
+                      "message": "NoUser"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete user by id",
+        "tags": [
+          "UserAPIs"
+        ]
+      },
+      "patch": {
+        "summary": "Patch user by Id",
+        "operationId": "update-user-details",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "updatedUserObject": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "BU": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "qualification": {
+                          "type": "string"
+                        },
+                        "team_id": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "User updated",
+                      "updatedUserObject": {
+                        "email": "test@vmware.com",
+                        "name": "TestUser",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "message": "User updated",
+                      "updatedUserObject": {
+                        "email": "test@vmware.com",
+                        "name": "TestUser",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "NoUser"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error example": {
+                    "value": {
+                      "message": "NoUser"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "UserAPIs"
+        ],
+        "description": "Update user details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "role": "admin"
+                  }
+                },
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Request body example": {
+                  "value": {
+                    "role": "admin"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/signup": {
+      "post": {
+        "summary": "New user sign up",
+        "tags": [
+          "UserAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "newUserObject": {
+                      "type": "object",
+                      "properties": {
+                        "email": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "BU": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "qualification": {
+                          "type": "string"
+                        },
+                        "team_id": {
+                          "type": "null"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "newUserObject": {
+                        "email": "test4@vmware.com",
+                        "name": "TestUser4",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "newUserObject": {
+                        "email": "test4@vmware.com",
+                        "name": "TestUser4",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "signup-user",
+        "description": "New user Sign up",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "role": {
+                    "type": "string"
+                  },
+                  "BU": {
+                    "type": "string"
+                  },
+                  "qualification": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "email": "test4@vmware.com",
+                    "password": "one",
+                    "name": "TestUser4",
+                    "role": "admin",
+                    "BU": "PCS",
+                    "qualification": "b.tech"
+                  }
+                }
+              },
+              "examples": {
+                "Request body example": {
+                  "value": {
+                    "email": "test4@vmware.com",
+                    "password": "one",
+                    "name": "TestUser4",
+                    "role": "admin",
+                    "BU": "PCS",
+                    "qualification": "b.tech"
+                  }
+                }
+              }
+            }
+          },
+          "description": ""
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "User login",
+        "tags": [
+          "UserAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "password": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "BU": {
+                          "type": "string"
+                        },
+                        "role": {
+                          "type": "string"
+                        },
+                        "qualification": {
+                          "type": "string"
+                        },
+                        "team_id": {
+                          "type": "null"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Auth Success",
+                      "user": {
+                        "_id": "62dd38f84cac8876df63d476",
+                        "email": "test5668@vmware.com",
+                        "password": "$2b$10$5iQQHSYF846sKo5bjmFJLeKWP41PSHagjqTdje/3pjdS14T0e1xju",
+                        "name": "TestUser4",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null,
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Login response example": {
+                    "value": {
+                      "message": "Auth Success",
+                      "user": {
+                        "_id": "62dd38f84cac8876df63d476",
+                        "email": "test5668@vmware.com",
+                        "password": "$2b$10$5iQQHSYF846sKo5bjmFJLeKWP41PSHagjqTdje/3pjdS14T0e1xju",
+                        "name": "TestUser4",
+                        "BU": "PCS",
+                        "role": "admin",
+                        "qualification": "b.tech",
+                        "team_id": null,
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "login-user",
+        "description": "User login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "email": "nairva@vmware.com",
+                    "password": "one"
+                  }
+                }
+              },
+              "examples": {
+                "User login example": {
+                  "value": {
+                    "email": "test@vmware.com",
+                    "password": "one"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/users/logout/del": {
+      "get": {
+        "summary": "Logout a user",
+        "tags": [
+          "UserAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "cookiesdeleted"
+                    }
+                  }
+                },
+                "examples": {
+                  "Logout Example": {
+                    "value": {
+                      "message": "cookiesdeleted"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "logout-user",
+        "description": "Logout a user"
+      }
+    },
+    "/api/assignments": {
+      "get": {
+        "summary": "Get all assignments",
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to all Team assignment ",
+                      "assignmentList": [
+                        {
+                          "_id": "62dd4695845e256444ee1ac4",
+                          "assignmentName": "Db assignment",
+                          "assignmentDescriptions": "database assignment",
+                          "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                          "postingDate": "2022-07-24T13:18:13.530Z",
+                          "deadlineDate": "2022-08-09T18:30:00.000Z",
+                          "isProject": false,
+                          "isTeamAssignment": true,
+                          "maximumMarks": 100,
+                          "grading": "Absolute",
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "assignmentList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "assignmentName": {
+                            "type": "string"
+                          },
+                          "assignmentDescriptions": {
+                            "type": "string"
+                          },
+                          "assignmentRepositoryUrl": {
+                            "type": "string"
+                          },
+                          "postingDate": {
+                            "type": "string"
+                          },
+                          "deadlineDate": {
+                            "type": "string"
+                          },
+                          "isProject": {
+                            "type": "boolean"
+                          },
+                          "isTeamAssignment": {
+                            "type": "boolean"
+                          },
+                          "maximumMarks": {
+                            "type": "integer"
+                          },
+                          "grading": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example (based on query parameter)": {
+                    "value": {
+                      "message": "Get request to all Team assignment ",
+                      "assignmentList": [
+                        {
+                          "_id": "62dd4695845e256444ee1ac4",
+                          "assignmentName": "Db assignment",
+                          "assignmentDescriptions": "database assignment",
+                          "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                          "postingDate": "2022-07-24T13:18:13.530Z",
+                          "deadlineDate": "2022-08-09T18:30:00.000Z",
+                          "isProject": false,
+                          "isTeamAssignment": true,
+                          "maximumMarks": 100,
+                          "grading": "Absolute",
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-assignments",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "all",
+            "description": "retrieves all assignments"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "project",
+            "description": "retrieves assignments that are projects"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "individual",
+            "description": "retrieves individual assignments"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "team",
+            "description": "retrieves team assignments"
+          }
+        ],
+        "description": "Get all assignments"
+      },
+      "post": {
+        "summary": "Post Assignment",
+        "operationId": "post-assignment",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "assignmentName": {
+                      "type": "string"
+                    },
+                    "assignmentDescriptions": {
+                      "type": "string"
+                    },
+                    "assignmentRepositoryUrl": {
+                      "type": "string"
+                    },
+                    "postingDate": {
+                      "type": "string"
+                    },
+                    "deadlineDate": {
+                      "type": "string"
+                    },
+                    "isProject": {
+                      "type": "boolean"
+                    },
+                    "isTeamAssignment": {
+                      "type": "boolean"
+                    },
+                    "maximumMarks": {
+                      "type": "integer"
+                    },
+                    "grading": {
+                      "type": "string"
+                    },
+                    "_id": {
+                      "type": "string"
+                    },
+                    "__v": {
+                      "type": "integer"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "assignmentName": "Db assignment",
+                      "assignmentDescriptions": "database assignment",
+                      "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                      "postingDate": "2022-07-24T13:27:35.604Z",
+                      "deadlineDate": "2022-08-09T18:30:00.000Z",
+                      "isProject": false,
+                      "isTeamAssignment": true,
+                      "maximumMarks": 100,
+                      "grading": "Absolute",
+                      "_id": "62dd48c7845e256444ee1acb",
+                      "__v": 0
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "assignmentName": "Db assignment",
+                      "assignmentDescriptions": "database assignment",
+                      "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                      "postingDate": "2022-07-24T13:27:35.604Z",
+                      "deadlineDate": "2022-08-09T18:30:00.000Z",
+                      "isProject": false,
+                      "isTeamAssignment": true,
+                      "maximumMarks": 100,
+                      "grading": "Absolute",
+                      "_id": "62dd48c7845e256444ee1acb",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "description": "Create a new assignment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "isProject": {
+                    "type": "boolean"
+                  },
+                  "assignmentName": {
+                    "type": "string"
+                  },
+                  "assignmentDescriptions": {
+                    "type": "string"
+                  },
+                  "assignmentRepositoryUrl": {
+                    "type": "string"
+                  },
+                  "deadlineDate": {
+                    "type": "string"
+                  },
+                  "isTeamAssignment": {
+                    "type": "boolean"
+                  },
+                  "grading": {
+                    "type": "string"
+                  },
+                  "maximumMarks": {
+                    "type": "integer"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "isProject": false,
+                    "assignmentName": "Db assignment",
+                    "assignmentDescriptions": "database assignment",
+                    "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                    "deadlineDate": "2022/08/10",
+                    "isTeamAssignment": true,
+                    "grading": "Absolute",
+                    "maximumMarks": 100
+                  }
+                }
+              },
+              "examples": {
+                "Request body Example": {
+                  "value": {
+                    "isProject": false,
+                    "assignmentName": "Db assignment",
+                    "assignmentDescriptions": "database assignment",
+                    "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                    "deadlineDate": "2022/08/10",
+                    "isTeamAssignment": true,
+                    "grading": "Absolute",
+                    "maximumMarks": 100
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/assignment/{assignmentId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "assignmentId",
+          "in": "path",
+          "required": true,
+          "description": "Assignment Id"
+        }
+      ],
+      "patch": {
+        "summary": "Patch Assignment by Id",
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "updatedAssignmentObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "assignmentName": {
+                          "type": "string"
+                        },
+                        "assignmentDescriptions": {
+                          "type": "string"
+                        },
+                        "assignmentRepositoryUrl": {
+                          "type": "string"
+                        },
+                        "postingDate": {
+                          "type": "string"
+                        },
+                        "deadlineDate": {
+                          "type": "string"
+                        },
+                        "isProject": {
+                          "type": "boolean"
+                        },
+                        "isTeamAssignment": {
+                          "type": "boolean"
+                        },
+                        "maximumMarks": {
+                          "type": "integer"
+                        },
+                        "grading": {
+                          "type": "string"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Assignment updated",
+                      "updatedAssignmentObject": {
+                        "_id": "62dd4695845e256444ee1ac4",
+                        "assignmentName": "Db assignment",
+                        "assignmentDescriptions": "database assignment",
+                        "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                        "postingDate": "2022-07-24T13:18:13.530Z",
+                        "deadlineDate": "2022-08-09T18:30:00.000Z",
+                        "isProject": false,
+                        "isTeamAssignment": true,
+                        "maximumMarks": 100,
+                        "grading": "Absolute",
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "message": "Assignment updated",
+                      "updatedAssignmentObject": {
+                        "_id": "62dd4695845e256444ee1ac4",
+                        "assignmentName": "Db assignment",
+                        "assignmentDescriptions": "database assignment",
+                        "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                        "postingDate": "2022-07-24T13:18:13.530Z",
+                        "deadlineDate": "2022-08-09T18:30:00.000Z",
+                        "isProject": false,
+                        "isTeamAssignment": true,
+                        "maximumMarks": 100,
+                        "grading": "Absolute",
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "There is no such Assignment"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error message ": {
+                    "value": {
+                      "message": "There is no such Assignment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "update-assignment",
+        "description": "Update an assignment",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "isProject": true,
+                    "isTeamAssignment": false
+                  }
+                }
+              },
+              "examples": {
+                "Request body example": {
+                  "value": {
+                    "isProject": true,
+                    "isTeamAssignment": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete Assignment by Id",
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "deletedAssignmentObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "assignmentName": {
+                          "type": "string"
+                        },
+                        "assignmentDescriptions": {
+                          "type": "string"
+                        },
+                        "assignmentRepositoryUrl": {
+                          "type": "string"
+                        },
+                        "postingDate": {
+                          "type": "string"
+                        },
+                        "deadlineDate": {
+                          "type": "string"
+                        },
+                        "isProject": {
+                          "type": "boolean"
+                        },
+                        "isTeamAssignment": {
+                          "type": "boolean"
+                        },
+                        "maximumMarks": {
+                          "type": "integer"
+                        },
+                        "grading": {
+                          "type": "string"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Successfully Deleted Assignment",
+                      "deletedAssignmentObject": {
+                        "_id": "62dd48c7845e256444ee1acb",
+                        "assignmentName": "Db assignment",
+                        "assignmentDescriptions": "database assignment",
+                        "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                        "postingDate": "2022-07-24T13:27:35.604Z",
+                        "deadlineDate": "2022-08-09T18:30:00.000Z",
+                        "isProject": false,
+                        "isTeamAssignment": true,
+                        "maximumMarks": 100,
+                        "grading": "Absolute",
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Successfully Deleted Assignment",
+                      "deletedAssignmentObject": {
+                        "_id": "62dd48c7845e256444ee1acb",
+                        "assignmentName": "Db assignment",
+                        "assignmentDescriptions": "database assignment",
+                        "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+                        "postingDate": "2022-07-24T13:27:35.604Z",
+                        "deadlineDate": "2022-08-09T18:30:00.000Z",
+                        "isProject": false,
+                        "isTeamAssignment": true,
+                        "maximumMarks": 100,
+                        "grading": "Absolute",
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "There is no such Assignment"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error message": {
+                    "value": {
+                      "message": "There is no such Assignment"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-assignment",
+        "description": "Delete an assignment"
+      }
+    },
+    "/api/teams": {
+      "get": {
+        "summary": "Get all teams",
+        "tags": [
+          "TeamAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "teamList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "ncgs": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "type": "string"
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "BU": {
+                                  "type": "string"
+                                },
+                                "role": {
+                                  "type": "string"
+                                },
+                                "qualification": {
+                                  "type": "string"
+                                },
+                                "team_id": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "mentor": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "_id": {
+                                  "type": "string"
+                                },
+                                "email": {
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "type": "string"
+                                },
+                                "BU": {
+                                  "type": "string"
+                                },
+                                "role": {
+                                  "type": "string"
+                                },
+                                "qualification": {
+                                  "type": "string"
+                                },
+                                "team_id": {
+                                  "type": "string"
+                                }
+                              }
+                            }
+                          },
+                          "project": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to all teams",
+                      "teamList": [
+                        {
+                          "_id": "62dd5015845e256444ee1af7",
+                          "ncgs": [
+                            {
+                              "_id": "62dd2a923d253599eba770d3",
+                              "email": "nairva@vmware.com",
+                              "name": "Varsha Nair",
+                              "BU": "PCS",
+                              "role": "ncg",
+                              "qualification": "b.tech",
+                              "team_id": "62dd5015845e256444ee1af7"
+                            }
+                          ],
+                          "mentor": [
+                            {
+                              "_id": "62dd2aa83d253599eba770d7",
+                              "email": "test@vmware.com",
+                              "name": "TestUser",
+                              "BU": "PCS",
+                              "role": "mentor",
+                              "qualification": "b.tech",
+                              "team_id": "62dd5015845e256444ee1af7"
+                            }
+                          ],
+                          "project": "62dd4695845e256444ee1ac4"
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Get request to all teams",
+                      "teamList": [
+                        {
+                          "_id": "62dd5015845e256444ee1af7",
+                          "ncgs": [
+                            {
+                              "_id": "62dd2a923d253599eba770d3",
+                              "email": "nairva@vmware.com",
+                              "name": "Varsha Nair",
+                              "BU": "PCS",
+                              "role": "ncg",
+                              "qualification": "b.tech",
+                              "team_id": "62dd5015845e256444ee1af7"
+                            }
+                          ],
+                          "mentor": [
+                            {
+                              "_id": "62dd2aa83d253599eba770d7",
+                              "email": "test@vmware.com",
+                              "name": "TestUser",
+                              "BU": "PCS",
+                              "role": "mentor",
+                              "qualification": "b.tech",
+                              "team_id": "62dd5015845e256444ee1af7"
+                            }
+                          ],
+                          "project": "62dd4695845e256444ee1ac4"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-all-teams",
+        "description": "Get all teams"
+      },
+      "post": {
+        "summary": "Create a new team",
+        "operationId": "create-team",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Successfully created a team"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "message": "Successfully created a team"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "description": "Create a new team",
+        "tags": [
+          "TeamAPIs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ncg_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "mentor_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "project_id": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "ncg_list": [
+                      "testncg1@vmware.com",
+                      "testncg2@vmware.com"
+                    ],
+                    "mentor_list": [
+                      "testmentor1@vmware.com"
+                    ],
+                    "project_id": "62e10617cc8cda5c07b35120"
+                  }
+                }
+              },
+              "examples": {
+                "Request body example": {
+                  "value": {
+                    "ncg_list": [
+                      "testncg1@vmware.com",
+                      "testncg2@vmware.com"
+                    ],
+                    "mentor_list": [
+                      "testmentor1@vmware.com"
+                    ],
+                    "project_id": "62e10617cc8cda5c07b35120"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/team/{teamId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "teamId",
+          "in": "path",
+          "required": true,
+          "description": "Team Id"
+        }
+      ],
+      "get": {
+        "summary": "Get team by Id",
+        "tags": [
+          "TeamAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to your team successfull",
+                      "teamObject": {
+                        "_id": "62dd5015845e256444ee1af7",
+                        "ncgs": [
+                          {
+                            "_id": "62dd2a923d253599eba770d3",
+                            "email": "nairva@vmware.com",
+                            "password": "$2b$10$5e4LfgWVfe9r1hQWvruOmeY7YBc3Cgajs1lnt7E50uvORD.RQZkCu",
+                            "name": "Varsha Nair",
+                            "BU": "PCS",
+                            "role": "ncg",
+                            "qualification": "b.tech",
+                            "team_id": "62dd5015845e256444ee1af7",
+                            "__v": 0
+                          }
+                        ],
+                        "mentor": [
+                          {
+                            "_id": "62dd2aa83d253599eba770d7",
+                            "email": "test@vmware.com",
+                            "password": "$2b$10$8tp5QyoAFLgIf2RpF4ipDewJlir8u8R6o50YDwDBCn/WhNYREdnLq",
+                            "name": "TestUser",
+                            "BU": "PCS",
+                            "role": "mentor",
+                            "qualification": "b.tech",
+                            "team_id": "62dd5015845e256444ee1af7",
+                            "__v": 0
+                          }
+                        ],
+                        "project": "62dd4695845e256444ee1ac4"
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "teamObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "ncgs": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "password": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "BU": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              },
+                              "qualification": {
+                                "type": "string"
+                              },
+                              "team_id": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "mentor": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "_id": {
+                                "type": "string"
+                              },
+                              "email": {
+                                "type": "string"
+                              },
+                              "password": {
+                                "type": "string"
+                              },
+                              "name": {
+                                "type": "string"
+                              },
+                              "BU": {
+                                "type": "string"
+                              },
+                              "role": {
+                                "type": "string"
+                              },
+                              "qualification": {
+                                "type": "string"
+                              },
+                              "team_id": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        },
+                        "project": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Get request to your team successfull",
+                      "teamObject": {
+                        "_id": "62dd5015845e256444ee1af7",
+                        "ncgs": [
+                          {
+                            "_id": "62dd2a923d253599eba770d3",
+                            "email": "nairva@vmware.com",
+                            "password": "$2b$10$5e4LfgWVfe9r1hQWvruOmeY7YBc3Cgajs1lnt7E50uvORD.RQZkCu",
+                            "name": "Varsha Nair",
+                            "BU": "PCS",
+                            "role": "ncg",
+                            "qualification": "b.tech",
+                            "team_id": "62dd5015845e256444ee1af7",
+                            "__v": 0
+                          }
+                        ],
+                        "mentor": [
+                          {
+                            "_id": "62dd2aa83d253599eba770d7",
+                            "email": "test@vmware.com",
+                            "password": "$2b$10$8tp5QyoAFLgIf2RpF4ipDewJlir8u8R6o50YDwDBCn/WhNYREdnLq",
+                            "name": "TestUser",
+                            "BU": "PCS",
+                            "role": "mentor",
+                            "qualification": "b.tech",
+                            "team_id": "62dd5015845e256444ee1af7",
+                            "__v": 0
+                          }
+                        ],
+                        "project": "62dd4695845e256444ee1ac4"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "NoTeam"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error message": {
+                    "value": {
+                      "message": "NoTeam"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-team-by-id",
+        "description": "Get team by Id"
+      },
+      "delete": {
+        "summary": "Delete team by Id",
+        "tags": [
+          "TeamAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "object",
+                      "properties": {
+                        "ncgdeleted": {
+                          "type": "object",
+                          "properties": {
+                            "acknowledged": {
+                              "type": "boolean"
+                            },
+                            "modifiedCount": {
+                              "type": "integer"
+                            },
+                            "upsertedId": {
+                              "type": "null"
+                            },
+                            "upsertedCount": {
+                              "type": "integer"
+                            },
+                            "matchedCount": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "mentorsdeleted": {
+                          "type": "object",
+                          "properties": {
+                            "acknowledged": {
+                              "type": "boolean"
+                            },
+                            "modifiedCount": {
+                              "type": "integer"
+                            },
+                            "upsertedId": {
+                              "type": "null"
+                            },
+                            "upsertedCount": {
+                              "type": "integer"
+                            },
+                            "matchedCount": {
+                              "type": "integer"
+                            }
+                          }
+                        },
+                        "teamdeleted": {
+                          "type": "object",
+                          "properties": {
+                            "acknowledged": {
+                              "type": "boolean"
+                            },
+                            "deletedCount": {
+                              "type": "integer"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "team is deleted and associated ncgs and mentors have been set null in there team_id: field",
+                      "result": {
+                        "ncgdeleted": {
+                          "acknowledged": true,
+                          "modifiedCount": 1,
+                          "upsertedId": null,
+                          "upsertedCount": 0,
+                          "matchedCount": 1
+                        },
+                        "mentorsdeleted": {
+                          "acknowledged": true,
+                          "modifiedCount": 1,
+                          "upsertedId": null,
+                          "upsertedCount": 0,
+                          "matchedCount": 1
+                        },
+                        "teamdeleted": {
+                          "acknowledged": true,
+                          "deletedCount": 1
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "team is deleted and associated ncgs and mentors have been set null in there team_id: field",
+                      "result": {
+                        "ncgdeleted": {
+                          "acknowledged": true,
+                          "modifiedCount": 1,
+                          "upsertedId": null,
+                          "upsertedCount": 0,
+                          "matchedCount": 1
+                        },
+                        "mentorsdeleted": {
+                          "acknowledged": true,
+                          "modifiedCount": 1,
+                          "upsertedId": null,
+                          "upsertedCount": 0,
+                          "matchedCount": 1
+                        },
+                        "teamdeleted": {
+                          "acknowledged": true,
+                          "deletedCount": 1
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "NoTeam"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error message": {
+                    "value": {
+                      "message": "NoTeam"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "delete-team-by-id",
+        "description": "Delete team by Id"
+      },
+      "patch": {
+        "summary": "Patch by TeamId",
+        "operationId": "patch-by-teamId",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "updatedTeamObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "project_id": {
+                          "type": "string"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Team updated",
+                      "updatedTeamObject": {
+                        "_id": "62e13d37bcb14cc3bee09ad9",
+                        "project_id": "62e18315fcc9eb5c4fe404e4",
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Team updated",
+                      "updatedTeamObject": {
+                        "_id": "62e13d37bcb14cc3bee09ad9",
+                        "project_id": "62e18315fcc9eb5c4fe404e4",
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "tags": [
+          "TeamAPIs"
+        ],
+        "description": "Update specific team's project_id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "project_id": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "project_id": "62e18315fcc9eb5c4fe404e4"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "project_id": "62e18315fcc9eb5c4fe404e4"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/submissions": {
+      "post": {
+        "summary": "Create a new submission",
+        "tags": [
+          "SubmissionAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Successfully submitted",
+                      "submittedObject": {
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "_id": "62dd59a2845e256444ee1b41",
+                        "__v": 0
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "submittedObject": {
+                      "type": "object",
+                      "properties": {
+                        "isProject": {
+                          "type": "boolean"
+                        },
+                        "team_id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "nullable": true
+                        },
+                        "submissionDate": {
+                          "type": "string"
+                        },
+                        "score": {
+                          "type": "integer"
+                        },
+                        "isEvaluted": {
+                          "type": "boolean"
+                        },
+                        "submissionOrAttachment": {
+                          "type": "string"
+                        },
+                        "evaluator_id": {
+                          "nullable": true
+                        },
+                        "assignment_id": {
+                          "type": "string"
+                        },
+                        "_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "New submission response body example": {
+                    "value": {
+                      "message": "Successfully submitted",
+                      "submittedObject": {
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "_id": "62dd59a2845e256444ee1b41"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "create-submission",
+        "description": "Create a new submission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "isProject": {
+                    "type": "boolean"
+                  },
+                  "team_id": {
+                    "type": "string"
+                  },
+                  "submissionOrAttachment": {
+                    "type": "string"
+                  },
+                  "assignment_id": {
+                    "type": "string"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "isProject": true,
+                    "team_id": "62dd5974845e256444ee1b2b",
+                    "submissionOrAttachment": "http://www.google.com",
+                    "assignment_id": "62dd4695845e256444ee1ac4"
+                  }
+                }
+              },
+              "examples": {
+                "Create new submission example": {
+                  "value": {
+                    "isProject": true,
+                    "team_id": "62dd5974845e256444ee1b2b",
+                    "submissionOrAttachment": "http://www.google.com",
+                    "assignment_id": "62dd4695845e256444ee1ac4"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all Submissions",
+        "operationId": "get-all-submissions",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to all submission",
+                      "submissionList": [
+                        {
+                          "_id": "62dd5fc3845e256444ee1b54",
+                          "isProject": true,
+                          "team_id": "62dd5974845e256444ee1b2b",
+                          "user_id": null,
+                          "submissionDate": "2022-07-24T15:05:39.479Z",
+                          "score": 80,
+                          "isEvaluted": true,
+                          "submissionOrAttachment": "http://www.google.com",
+                          "evaluator_id": "62dcf27e7effaeb3e69947df",
+                          "assignment_id": "62dd4695845e256444ee1ac4",
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "submissionList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "isProject": {
+                            "type": "boolean"
+                          },
+                          "team_id": {
+                            "type": "string"
+                          },
+                          "user_id": {
+                            "nullable": true
+                          },
+                          "submissionDate": {
+                            "type": "string"
+                          },
+                          "score": {
+                            "type": "integer"
+                          },
+                          "isEvaluted": {
+                            "type": "boolean"
+                          },
+                          "submissionOrAttachment": {
+                            "type": "string"
+                          },
+                          "evaluator_id": {
+                            "type": "string"
+                          },
+                          "assignment_id": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Get all submissions": {
+                    "value": {
+                      "message": "Get request to all submission",
+                      "submissionList": [
+                        {
+                          "_id": "62dd5fc3845e256444ee1b54",
+                          "isProject": true,
+                          "team_id": "62dd5974845e256444ee1b2b",
+                          "user_id": null,
+                          "submissionDate": "2022-07-24T15:05:39.479Z",
+                          "score": 80,
+                          "isEvaluted": true,
+                          "submissionOrAttachment": "http://www.google.com",
+                          "evaluator_id": "62dcf27e7effaeb3e69947df",
+                          "assignment_id": "62dd4695845e256444ee1ac4",
+                          "__v": 0
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "description": "Get all Submissions",
+        "tags": [
+          "SubmissionAPIs"
+        ]
+      }
+    },
+    "/api/submissions/{submissionId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "submissionId",
+          "in": "path",
+          "required": true,
+          "description": "Submission id "
+        }
+      ],
+      "get": {
+        "summary": "Get submission by Id",
+        "tags": [
+          "SubmissionAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "submissionObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "isProject": {
+                          "type": "boolean"
+                        },
+                        "team_id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "type": "null"
+                        },
+                        "submissionDate": {
+                          "type": "string"
+                        },
+                        "score": {
+                          "type": "integer"
+                        },
+                        "isEvaluted": {
+                          "type": "boolean"
+                        },
+                        "submissionOrAttachment": {
+                          "type": "string"
+                        },
+                        "evaluator_id": {
+                          "type": "null"
+                        },
+                        "assignment_id": {
+                          "type": "string"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Here is the user you asked for",
+                      "submissionObject": {
+                        "_id": "62dd59a2845e256444ee1b41",
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Here is the user you asked for",
+                      "submissionObject": {
+                        "_id": "62dd59a2845e256444ee1b41",
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "There is no such submission"
+                    }
+                  }
+                },
+                "examples": {
+                  "Error message": {
+                    "value": {
+                      "message": "There is no such submission"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-submission-by-id",
+        "description": "Get a specific submission"
+      },
+      "delete": {
+        "summary": "Delete submission by Id",
+        "operationId": "delete-submission-by-id",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Successfully Deleted ",
+                      "deletedSubmissionObject": {
+                        "_id": "62dd59a2845e256444ee1b41",
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "__v": 0
+                      }
+                    }
+                  },
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "deletedSubmissionObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "isProject": {
+                          "type": "boolean"
+                        },
+                        "team_id": {
+                          "type": "string"
+                        },
+                        "user_id": {
+                          "nullable": true
+                        },
+                        "submissionDate": {
+                          "type": "string"
+                        },
+                        "score": {
+                          "type": "integer"
+                        },
+                        "isEvaluted": {
+                          "type": "boolean"
+                        },
+                        "submissionOrAttachment": {
+                          "type": "string"
+                        },
+                        "evaluator_id": {
+                          "nullable": true
+                        },
+                        "assignment_id": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Successfully Deleted ",
+                      "deletedSubmissionObject": {
+                        "_id": "62dd59a2845e256444ee1b41",
+                        "isProject": true,
+                        "team_id": "62dd5974845e256444ee1b2b",
+                        "user_id": null,
+                        "submissionDate": "2022-07-24T14:39:30.859Z",
+                        "score": 0,
+                        "isEvaluted": false,
+                        "submissionOrAttachment": "http://www.google.com",
+                        "evaluator_id": null,
+                        "assignment_id": "62dd4695845e256444ee1ac4",
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Delete submission by Id",
+        "tags": [
+          "SubmissionAPIs"
+        ]
+      },
+      "patch": {
+        "summary": "Evaluate Submission",
+        "operationId": "evaluate-submission",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Score updated"
+                    }
+                  }
+                },
+                "examples": {
+                  "Response body example": {
+                    "value": {
+                      "message": "Score updated"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "description": "Evaluate/Patch submission",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "evaluator_id": {
+                    "type": "string"
+                  },
+                  "score": {
+                    "type": "integer"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "evaluator_id": "62dcf27e7effaeb3e69947df",
+                    "score": 80
+                  }
+                }
+              },
+              "examples": {
+                "Request body example": {
+                  "value": {
+                    "evaluator_id": "62dcf27e7effaeb3e69947df",
+                    "score": 80
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "SubmissionAPIs"
+        ]
+      }
+    },
+    "/api/submissions/results/leaderboard": {
+      "get": {
+        "summary": "Get leaderboard for evaluated assignments",
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        },
+        "operationId": "get-leaderboard",
+        "description": "Get leaderboard ",
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "individual",
+            "description": "individual assignments"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "project",
+            "description": "projects"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "team",
+            "description": "team assignments"
+          }
+        ]
+      },
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "",
+          "in": "path",
+          "required": true
+        }
+      ]
+    },
+    "/api/submissions/evaluate/relative_grading_for_individual_submissions": {
+      "get": {
+        "summary": "Get relative grading for assignments",
+        "tags": [
+          "AssignmentAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "relative evaluation done for individual assignment"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "relative evaluation done for individual assignment"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "get-relative-grading",
+        "description": "Get relative grading for assignments"
+      }
+    },
+    "/api/meetings": {
+      "post": {
+        "summary": "Post a new meeting",
+        "tags": [
+          "MeetingAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "meetObject": {
+                      "type": "object",
+                      "properties": {
+                        "zoomlink": {
+                          "type": "string"
+                        },
+                        "meetTitle": {
+                          "type": "string"
+                        },
+                        "meetDescription": {
+                          "type": "string"
+                        },
+                        "isRecorded": {
+                          "type": "boolean"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Posted a recorded meeting",
+                      "meetObject": {
+                        "zoomlink": "http://www.googe.com",
+                        "meetTitle": "samplemeet2",
+                        "meetDescription": "sample",
+                        "isRecorded": true
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Posted a recorded meeting",
+                      "meetObject": {
+                        "zoomlink": "http://www.googe.com",
+                        "meetTitle": "samplemeet2",
+                        "meetDescription": "sample",
+                        "isRecorded": true
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "operationId": "post-api-meetings",
+        "description": "Post a new meeting",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "zoomlink": {
+                    "type": "string"
+                  },
+                  "meetTitle": {
+                    "type": "string"
+                  },
+                  "meetDescription": {
+                    "type": "string"
+                  },
+                  "startTime": {
+                    "type": "string"
+                  },
+                  "endTime": {
+                    "type": "string"
+                  },
+                  "isRecorded": {
+                    "type": "boolean"
+                  }
+                },
+                "x-examples": {
+                  "example-1": {
+                    "zoomlink": "http://www.google.com",
+                    "meetTitle": "samplemeet",
+                    "meetDescription": "sample",
+                    "startTime": "2022/07/30/18:30",
+                    "endTime": "2022/07/30/19:30",
+                    "isRecorded": false
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "zoomlink": "http://www.google.com",
+                    "meetTitle": "samplemeet",
+                    "meetDescription": "sample",
+                    "startTime": "2022/07/30/18:30",
+                    "endTime": "2022/07/30/19:30",
+                    "isRecorded": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all meetings",
+        "operationId": "get-api-meetings",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "meetingList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "_id": {
+                            "type": "string"
+                          },
+                          "zoomlink": {
+                            "type": "string"
+                          },
+                          "meetTitle": {
+                            "type": "string"
+                          },
+                          "meetDescription": {
+                            "type": "string"
+                          },
+                          "startTime": {
+                            "type": "string"
+                          },
+                          "endTime": {
+                            "type": "string"
+                          },
+                          "isRecorded": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Get request to the only live meeting",
+                      "meetingList": [
+                        {
+                          "_id": "62e18ac416994a532e55fd74",
+                          "zoomlink": "http://www.google.com",
+                          "meetTitle": "samplemeet",
+                          "meetDescription": "sample",
+                          "startTime": "2022-07-30T13:00:00.000Z",
+                          "endTime": "2022-07-30T14:00:00.000Z",
+                          "isRecorded": false
+                        }
+                      ]
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "string",
+                      "meetingList": [
+                        {
+                          "_id": "string",
+                          "zoomlink": "string",
+                          "meetTitle": "string",
+                          "meetDescription": "string",
+                          "startTime": "string",
+                          "endTime": "string",
+                          "isRecorded": true
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "live",
+            "description": "Live meeting"
+          },
+          {
+            "schema": {
+              "type": "string"
+            },
+            "in": "query",
+            "name": "recorded",
+            "description": "Recorded meetings"
+          }
+        ],
+        "tags": [
+          "MeetingAPIs"
+        ],
+        "description": "Get all meetings"
+      }
+    },
+    "/api/meetings/{meetingId}": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string"
+          },
+          "name": "meetingId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "get": {
+        "summary": "Get a specific meeting",
+        "tags": [
+          "MeetingAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "meetObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "zoomlink": {
+                          "type": "string"
+                        },
+                        "meetTitle": {
+                          "type": "string"
+                        },
+                        "meetDescription": {
+                          "type": "string"
+                        },
+                        "startTime": {
+                          "type": "string"
+                        },
+                        "endTime": {
+                          "type": "string"
+                        },
+                        "isRecorded": {
+                          "type": "boolean"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Here is the meeting you asked for",
+                      "meetObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Here is the meeting you asked for",
+                      "meetObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "NoMeet"
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "NoMeet"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-meeting-by-id",
+        "description": "Get meeting by id "
+      },
+      "delete": {
+        "summary": "Delete a meeting",
+        "tags": [
+          "MeetingAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "deletedUserObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "zoomlink": {
+                          "type": "string"
+                        },
+                        "meetTitle": {
+                          "type": "string"
+                        },
+                        "meetDescription": {
+                          "type": "string"
+                        },
+                        "startTime": {
+                          "type": "string"
+                        },
+                        "endTime": {
+                          "type": "string"
+                        },
+                        "isRecorded": {
+                          "type": "boolean"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Successfully Deleted ",
+                      "deletedUserObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Successfully Deleted ",
+                      "deletedUserObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "delete-meeting-by-id",
+        "description": "Delete meeting by Id"
+      },
+      "patch": {
+        "summary": "Patch a meeting",
+        "tags": [
+          "MeetingAPIs"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "updatedMeetingObject": {
+                      "type": "object",
+                      "properties": {
+                        "_id": {
+                          "type": "string"
+                        },
+                        "zoomlink": {
+                          "type": "string"
+                        },
+                        "meetTitle": {
+                          "type": "string"
+                        },
+                        "meetDescription": {
+                          "type": "string"
+                        },
+                        "startTime": {
+                          "type": "string"
+                        },
+                        "endTime": {
+                          "type": "string"
+                        },
+                        "isRecorded": {
+                          "type": "boolean"
+                        },
+                        "__v": {
+                          "type": "integer"
+                        }
+                      }
+                    }
+                  },
+                  "x-examples": {
+                    "example-1": {
+                      "message": "Updated the meeting time",
+                      "updatedMeetingObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                },
+                "examples": {
+                  "Example": {
+                    "value": {
+                      "message": "Updated the meeting time",
+                      "updatedMeetingObject": {
+                        "_id": "62e18ac416994a532e55fd74",
+                        "zoomlink": "http://www.google.com",
+                        "meetTitle": "samplemeet",
+                        "meetDescription": "changed description",
+                        "startTime": "2022-07-30T13:00:00.000Z",
+                        "endTime": "2022-07-30T14:00:00.000Z",
+                        "isRecorded": false,
+                        "__v": 0
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        },
+        "operationId": "patch-meeting-by-id",
+        "description": "Patch meeting by Id",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "x-examples": {
+                  "example-1": {
+                    "meetDescription": "changed description"
+                  }
+                },
+                "properties": {
+                  "field": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "Example": {
+                  "value": {
+                    "meetDescription": "changed description"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

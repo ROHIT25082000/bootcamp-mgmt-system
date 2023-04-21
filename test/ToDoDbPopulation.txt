@@ -1,0 +1,133 @@
+
+/* User Schema */
+/* 1Admin, 2 NCGs, 1Mentor
+"userList": [
+        {
+
+            "email": "testadmin@vmware.com",
+            "password": "one",
+            "name": "TestAdmin",
+            "BU": "TechnicalEducation",
+            "role": "admin",
+            "qualification": "b.tech",
+
+
+        },
+        {
+
+            "email": "testncg1@vmware.com",
+            "password": "one",
+            "name": "TestNCG1",
+            "BU": "PCS",
+            "role": "ncg",
+            "qualification": "b.tech",
+
+
+        },
+        {
+
+            "email": "testncg2@vmware.com",
+            "password": "one",
+            "name": "TestNCG2",
+            "BU": "PCS",
+            "role": "ncg",
+            "qualification": "b.tech",
+
+
+        },
+
+        {
+
+            "email": "testmentor1@vmware.com",
+            "password": "one",
+            "name": "TestMentor1",
+            "BU": "VMConAWS",
+            "role": "mentor",
+            "qualification": "b.tech",
+
+
+        }
+
+
+    ]
+
+*/
+
+
+
+/*  Assignments schema */
+/* 1 Project, 1 Team assignment, 1 individual assignment
+ "assignmentList": [
+        {
+            "assignmentName": "BootcampManagementSystem",
+            "assignmentDescriptions": "Main project",
+            "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+            "postingDate": "2022-07-27T08:09:50.659Z",
+            "deadlineDate": "2022-08-29T18:30:00.000Z",
+            "isProject": true,
+            "isTeamAssignment": false,
+            "maximumMarks": 100,
+            "grading": "Absolute",
+
+        },
+        {
+
+            "assignmentName": "dB Assignment",
+            "assignmentDescriptions": "dB Assignment",
+            "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+            "postingDate": "2022-07-27T08:12:14.000Z",
+            "deadlineDate": "2022-08-29T18:30:00.000Z",
+            "isProject": false,
+            "isTeamAssignment": true,
+            "maximumMarks": 100,
+            "grading": "Absolute",
+
+        },
+        {
+
+            "assignmentName": "UI Assignment",
+            "assignmentDescriptions": "UI Assignment",
+            "assignmentRepositoryUrl": "https://gitlab.eng.vmware.com/user/test",
+            "postingDate": "2022-07-27T08:12:47.301Z",
+            "deadlineDate": "2022-08-29T18:30:00.000Z",
+            "isProject": false,
+            "isTeamAssignment": false,
+            "maximumMarks": 100,
+            "grading": "Relative",
+
+        }
+    ]
+
+*/
+
+
+/* Team schema */
+/*{
+      "ncg_list": [
+          {
+              "_id": TestNCG1
+          },
+          {
+              "_id": TestNCG2
+          }
+      ],
+      "mentor_list": [
+          {
+              "_id": TestMentor1
+          }
+      ],
+      "project_id" : "Main project Id//BootcampManagementSystem"
+  }*/
+
+
+
+/* Meeting schema */
+
+/*  {
+      "zoomlink": "http://www.google.com",
+      "meetTitle": "samplemeet",
+      "meetDescription": "sample",
+      "startTime": "2022/07/30/18:30",
+      "endTime": "2022/07/30/19:30",
+      "isRecorded": false
+  } */
